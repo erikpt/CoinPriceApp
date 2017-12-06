@@ -19,7 +19,7 @@
         Me.coin1LastPrice = coin1Snapshot.Data.AggregatedData.PRICE
         Me.Text = Coin1GroupBox.Text & "Current Price: " & Me.coin1LastPrice.ToString("$0.00")
         Dim lud As DateTime = ConvertUnixDate(coin1Snapshot.Data.AggregatedData.LASTUPDATE).ToLocalTime
-        Me.Coin1Vol24.Text = coin1Snapshot.Data.AggregatedData.VOLUME24HOUR.ToString("0.000")
+        Me.Coin1Vol24.Text = coin1Snapshot.Data.AggregatedData.VOLUME24HOUR.ToString("#,###.000")
         Me.Coin1LastUpdate.Text = lud.ToShortDateString & " " & lud.ToShortTimeString
         Me.Coin1Open24.Text = coin1Snapshot.Data.AggregatedData.OPEN24HOUR.ToString("$0.00")
         If coin1HighestPrice < coin1Snapshot.Data.AggregatedData.HIGH24HOUR Then
