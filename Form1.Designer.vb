@@ -26,6 +26,9 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Coin1RefreshTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Coin1GroupBox = New System.Windows.Forms.GroupBox()
+        Me.cboCoinTo = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cboCoinFrom = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Coin1PriceDelta = New System.Windows.Forms.Label()
         Me.Coin1Vol24 = New System.Windows.Forms.Label()
@@ -48,6 +51,8 @@ Partial Class Form1
         Me.Coin1Price = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Coin1SnapTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Coin1Exchange = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Coin1GroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -57,6 +62,11 @@ Partial Class Form1
         'Coin1GroupBox
         '
         Me.Coin1GroupBox.BackColor = System.Drawing.Color.Black
+        Me.Coin1GroupBox.Controls.Add(Me.Coin1Exchange)
+        Me.Coin1GroupBox.Controls.Add(Me.Label14)
+        Me.Coin1GroupBox.Controls.Add(Me.cboCoinTo)
+        Me.Coin1GroupBox.Controls.Add(Me.Label6)
+        Me.Coin1GroupBox.Controls.Add(Me.cboCoinFrom)
         Me.Coin1GroupBox.Controls.Add(Me.Label12)
         Me.Coin1GroupBox.Controls.Add(Me.Coin1PriceDelta)
         Me.Coin1GroupBox.Controls.Add(Me.Coin1Vol24)
@@ -87,6 +97,41 @@ Partial Class Form1
         Me.Coin1GroupBox.TabIndex = 2
         Me.Coin1GroupBox.TabStop = False
         Me.Coin1GroupBox.Text = "IOT/USD Status"
+        '
+        'cboCoinTo
+        '
+        Me.cboCoinTo.BackColor = System.Drawing.Color.Black
+        Me.cboCoinTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboCoinTo.ForeColor = System.Drawing.Color.White
+        Me.cboCoinTo.FormattingEnabled = True
+        Me.cboCoinTo.Items.AddRange(New Object() {"USD", "BTC", "ETH", "AUD", "CAD", "EUR", "JPY", "RUB", "CHF", "GBP", "CNY"})
+        Me.cboCoinTo.Location = New System.Drawing.Point(284, 22)
+        Me.cboCoinTo.Name = "cboCoinTo"
+        Me.cboCoinTo.Size = New System.Drawing.Size(80, 24)
+        Me.cboCoinTo.TabIndex = 23
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.Location = New System.Drawing.Point(257, 27)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(21, 23)
+        Me.Label6.TabIndex = 22
+        Me.Label6.Text = "/"
+        '
+        'cboCoinFrom
+        '
+        Me.cboCoinFrom.BackColor = System.Drawing.Color.Black
+        Me.cboCoinFrom.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboCoinFrom.ForeColor = System.Drawing.Color.White
+        Me.cboCoinFrom.FormattingEnabled = True
+        Me.cboCoinFrom.Items.AddRange(New Object() {"IOT", "BTC", "ETH", "LTC", "BCH", "GNO", "EOS", "LSK", "DASH", "ICN", "FCT", "XMR", "NAV", "MAID", "REP", "XRP", "BCU", "AVT", "ETP", "OMG", "SAN", "DAT", "NEO", "DOGE", "QTUM", "ZEN", "LBC"})
+        Me.cboCoinFrom.Location = New System.Drawing.Point(171, 22)
+        Me.cboCoinFrom.Name = "cboCoinFrom"
+        Me.cboCoinFrom.Size = New System.Drawing.Size(80, 24)
+        Me.cboCoinFrom.TabIndex = 21
         '
         'Label12
         '
@@ -331,6 +376,29 @@ Partial Class Form1
         '
         Me.Coin1SnapTimer.Interval = 30000
         '
+        'Coin1Exchange
+        '
+        Me.Coin1Exchange.AutoSize = True
+        Me.Coin1Exchange.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Coin1Exchange.ForeColor = System.Drawing.Color.White
+        Me.Coin1Exchange.Location = New System.Drawing.Point(122, 178)
+        Me.Coin1Exchange.Name = "Coin1Exchange"
+        Me.Coin1Exchange.Size = New System.Drawing.Size(98, 23)
+        Me.Coin1Exchange.TabIndex = 25
+        Me.Coin1Exchange.Text = "        "
+        Me.Coin1Exchange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.White
+        Me.Label14.Location = New System.Drawing.Point(7, 178)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(109, 23)
+        Me.Label14.TabIndex = 24
+        Me.Label14.Text = "Exchange:"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -373,5 +441,10 @@ Partial Class Form1
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Coin1PriceDelta As System.Windows.Forms.Label
+    Friend WithEvents cboCoinTo As System.Windows.Forms.ComboBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents cboCoinFrom As System.Windows.Forms.ComboBox
+    Friend WithEvents Coin1Exchange As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
 
 End Class

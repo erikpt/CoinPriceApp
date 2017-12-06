@@ -5,9 +5,9 @@
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Converters
 
+
 Public Class CryptoCompareMinAPI
     Public Structure PriceInfo
-        Dim BTC As Double
         Dim USD As Double
     End Structure
 
@@ -71,9 +71,9 @@ Public Class CryptoCompareMinAPI
         Dim LOW24HOUR As Double '"2.095"
     End Structure
 
-    Public Function GetSnapshotIOTUSD() As CoinSnapshot
+    Public Function GetSnapshotCoinPair(Optional FromCoin As String = "IOT", Optional ToCoin As String = "USD") As CoinSnapshot
         Dim wc As New Net.WebClient()
-        Dim t As New IO.StreamReader(wc.OpenRead("https://www.cryptocompare.com/api/data/coinsnapshot/?fsym=IOT&tsym=USD"))
+        Dim t As New IO.StreamReader(wc.OpenRead("https://www.cryptocompare.com/api/data/coinsnapshot/?fsym=" & FromCoin & "&tsym=" & ToCoin))
         Dim retVal As New CoinSnapshot
         Dim jsonString As String = t.ReadToEnd()
         '//Convert the JSON back to a structure
@@ -84,15 +84,27 @@ Public Class CryptoCompareMinAPI
         Return retVal
     End Function
 
-    Public Function GetPriceIOTUSD() As PriceInfo
-        Dim wc As New Net.WebClient()
-        Dim t As New IO.StreamReader(wc.OpenRead("https://min-api.cryptocompare.com/data/price?fsym=IOT&tsyms=BTC,USD"))
-        Dim retVal As New PriceInfo
-        '//Convert the JSON back to a structure
-        retVal = JsonConvert.DeserializeObject(t.ReadToEnd(), GetType(PriceInfo))
-        t.Close()
-        t.Dispose()
-        wc.Dispose()
+    Public Function GetPriceCoinPair(Optional FromCoin As String = "IOT", Optional ToCoin As String = "USD") As Generic.Dictionary(Of String, Double)
+        Dim jsonString As String
+        Dim t As IO.StreamReader
+        Try
+            Dim wc As New Net.WebClient()
+            t = New IO.StreamReader(wc.OpenRead("https://min-api.cryptocompare.com/data/price?fsym=" & FromCoin & "&tsyms=" & ToCoin))
+            'Dim retVal As Object
+            '//Convert the JSON back to a structure
+            jsonString = t.ReadToEnd()
+            t.Close()
+            t.Dispose()
+            wc.Dispose()
+        Catch
+            jsonString = "{""ERROR"":0.00}"
+        End Try
+        Dim jso As Newtonsoft.Json.Linq.JObject
+        Dim retVal As New Generic.Dictionary(Of String, Double)
+        jso = JsonConvert.DeserializeObject(jsonString, GetType(Object))
+        Dim jsp As Newtonsoft.Json.Linq.JProperty = jso.First
+        Dim jval As Newtonsoft.Json.Linq.JValue = jsp.Value
+        retVal.Add(jsp.Path, jval.Value)
         Return retVal
     End Function
 
