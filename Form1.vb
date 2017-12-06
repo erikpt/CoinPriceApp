@@ -2,7 +2,8 @@
 
     Private api As CryptoCompareMinAPI
     Private coin1Snapshot As CryptoCompareMinAPI.CoinSnapshot
-    Private coin1LastPrice As Double
+    Private coin1LastPrice As Double = 0
+    Private coin1HighestPrice As Double = 0
     Private mouseIsDown As Boolean = False
     Private Xmod As Long = 0
     Private Ymod As Long = 0
@@ -21,7 +22,10 @@
         Me.Coin1Vol24.Text = coin1Snapshot.Data.AggregatedData.VOLUME24HOUR.ToString("0.000")
         Me.Coin1LastUpdate.Text = lud.ToShortDateString & " " & lud.ToShortTimeString
         Me.Coin1Open24.Text = coin1Snapshot.Data.AggregatedData.OPEN24HOUR.ToString("$0.00")
-        Me.Coin1High24.Text = coin1Snapshot.Data.AggregatedData.HIGH24HOUR.ToString("$0.00")
+        If coin1HighestPrice < coin1Snapshot.Data.AggregatedData.HIGH24HOUR Then
+            coin1HighestPrice = coin1Snapshot.Data.AggregatedData.HIGH24HOUR
+        End If
+        Me.Coin1High24.Text = coin1HighestPrice.ToString("$0.00")
         Me.Coin1Low24.Text = coin1Snapshot.Data.AggregatedData.LOW24HOUR.ToString("$0.00")
         Me.Coin1OpenDay.Text = coin1Snapshot.Data.AggregatedData.OPENDAY.ToString("$0.00")
         Me.Coin1LowDay.Text = coin1Snapshot.Data.AggregatedData.LOWDAY.ToString("$0.00")
@@ -53,12 +57,25 @@
             Me.Coin1PriceDelta.Text = "(" & gainLossAmt.ToString("$0.00") & " " & gainLossPct.ToString("0.00%") & ")"
         End If
         If info.USD > coin1LastPrice Then
+            Me.Coin1Price.ForeColor = Color.LawnGreen
+            Me.Coin1PriceDelta.ForeColor = Color.LawnGreen
             My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Exclamation)
         ElseIf info.USD < coin1LastPrice Then
+            Me.Coin1Price.ForeColor = Color.OrangeRed
+            Me.Coin1PriceDelta.ForeColor = Color.OrangeRed
             My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Hand)
         End If
         coin1LastPrice = info.USD
-
+        If coin1HighestPrice < coin1LastPrice Then
+            coin1HighestPrice = coin1LastPrice
+            Me.Coin1High24.Text = coin1HighestPrice.ToString("0.00%")
+            Me.Coin1High24.ForeColor = Color.LightGreen
+            Me.Coin1HighDay.ForeColor = Color.LightGreen
+            Me.Coin1HighDay.Text = coin1HighestPrice.ToString("0.00%")
+        Else
+            Me.Coin1High24.ForeColor = Color.White
+            Me.Coin1HighDay.ForeColor = Color.White
+        End If
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -66,6 +83,7 @@
         Button1_Click(New Object, New EventArgs)
         Me.Coin1SnapTimer.Enabled = True
         Me.Coin1GroupBox.Cursor = Cursors.Cross
+        Me.TopMost = True
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click

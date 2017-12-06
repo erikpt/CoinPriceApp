@@ -1,0 +1,13 @@
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\bin\Release\CoinPriceApp.exe.config
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\bin\Release\CoinPriceApp.exe
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\bin\Release\CoinPriceApp.pdb
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\bin\Release\CoinPriceApp.xml
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\bin\Release\Newtonsoft.Json.dll
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\bin\Release\Newtonsoft.Json.xml
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\obj\Release\CoinPriceApp.Form1.resources
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\obj\Release\CoinPriceApp.Resources.resources
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\obj\Release\CoinPriceApp.vbproj.GenerateResource.Cache
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\obj\Release\CoinPriceApp.exe
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\obj\Release\CoinPriceApp.xml
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\obj\Release\CoinPriceApp.pdb
+C:\Users\erik.pitti\documents\visual studio 2013\Projects\CoinPriceApp\CoinPriceApp\obj\Release\CoinPriceApp.vbprojResolveAssemblyReference.cache
